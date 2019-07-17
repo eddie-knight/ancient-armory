@@ -1,6 +1,7 @@
-using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 using RpgDB;
 
 namespace AncientArmory
@@ -154,7 +155,8 @@ namespace AncientArmory
 
         void assignStats(Character merc)
         {
-            int minimum = merc.Level / 3;
+            // level divided by 3, rounded
+            int minimum = Convert.ToInt32(Math.Round((merc.Level / 3f), 0));
             int maximum = merc.Level + 1;
             merc.Abilities.STR = Roll.rollDie(maximum) + minimum;
             merc.Abilities.DEX = Roll.rollDie(maximum) + minimum;
